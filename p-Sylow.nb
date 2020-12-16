@@ -1,0 +1,363 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14539,        353]
+NotebookOptionsPosition[     13957,        335]
+NotebookOutlinePosition[     14359,        351]
+CellTagsIndexPosition[     14316,        348]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"AutoCollapse", "[", "]"}], ":=", 
+   RowBox[{"(", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"$FrontEnd", "=!=", "$Failed"}], ",", 
+      RowBox[{
+       RowBox[{"SelectionMove", "[", 
+        RowBox[{
+         RowBox[{"EvaluationNotebook", "[", "]"}], ",", "All", ",", 
+         "GeneratedCell"}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+       "FrontEndTokenExecute", "[", "\"\<SelectionCloseUnselectedCells\>\"", 
+        "]"}]}]}], "]"}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{"(*", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Gv", "=", "140"}], "}"}], ","}]}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Row", "[", 
+           RowBox[{"{", 
+            RowBox[{"p", ",", "\"\<-Sylow subgroup order\>\""}], "}"}], "]"}],
+           ",", 
+          RowBox[{"Row", "[", 
+           RowBox[{"{", 
+            RowBox[{
+            "\"\<Possible #'s \>\"", ",", "n", ",", "\"\< of \>\"", ",", "p", 
+             ",", "\"\<-Sylow subgroups\>\""}], 
+            RowBox[{"(*", 
+             RowBox[{",", "\"\<; \>\"", ",", 
+              RowBox[{"n", "\[Congruent]", "1"}], ",", "\"\< (mod \>\"", ",", 
+              "p", ",", "\"\<); \>\"", ",", 
+              RowBox[{"n", "\[VerticalSeparator]", 
+               RowBox[{"Row", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Abs", "[", "G", "]"}], ",", "\"\</\>\"", ",", 
+                  RowBox[{"p", "^", "k"}]}], "}"}], "]"}]}]}], "*)"}], "}"}], 
+           "]"}], ",", "\"\<Known Properties\>\""}], "}"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"With", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"pv", "=", 
+              RowBox[{"pk", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+             RowBox[{"kv", "=", 
+              RowBox[{"pk", "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Join", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"p", "^", "k"}], "\[Rule]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"kv", "\[Equal]", "1"}], ",", "pv", ",", 
+                 RowBox[{"Defer", "[", 
+                  RowBox[{"pv", "^", "kv"}], "]"}]}], "]"}]}], "}"}], ",", 
+             RowBox[{"With", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"sol", "=", 
+                 RowBox[{"Solve", "[", 
+                  RowBox[{
+                   RowBox[{"Reduce", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Mod", "[", 
+                    RowBox[{"nv", ",", "pv"}], "]"}], "\[Equal]", "1"}], "&&", 
+                    RowBox[{
+                    RowBox[{"nv", " ", "v"}], "\[Equal]", 
+                    RowBox[{"Gv", "/", 
+                    RowBox[{"pv", "^", "kv"}]}]}], "&&", 
+                    RowBox[{"nv", "\[GreaterEqual]", "0"}], "&&", 
+                    RowBox[{"v", "\[GreaterEqual]", "0"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"nv", ",", "v"}], "}"}], ",", "Integers"}], "]"}],
+                    ",", 
+                   RowBox[{"{", 
+                    RowBox[{"nv", ",", "v"}], "}"}]}], "]"}]}], "}"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Map", "[", 
+                  RowBox[{
+                   RowBox[{"Function", "[", 
+                    RowBox[{"sol", ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"n", "\[Rule]", "nv"}], ",", "\"\<\>\"", ",", 
+                    "\"\<\>\"", ",", "\"\<\>\"", ",", 
+                    RowBox[{"n", "\[Equal]", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Floor", "[", 
+                    RowBox[{"nv", "/", "pv"}], "]"}], "\[CenterDot]", "p"}], 
+                    "+", "1"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"n", "\[CenterDot]", "nv"}], "\[Equal]", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Abs", "[", "G", "]"}], ",", "\"\</\>\"", ",", 
+                    RowBox[{"Defer", "[", 
+                    RowBox[{"p", "^", "k"}], "]"}]}], "}"}], "]"}], 
+                    "\[Equal]", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"Gv", ",", "\"\</\>\"", ",", 
+                    RowBox[{"pv", "^", "kv"}]}], "}"}], "]"}], "==", 
+                    RowBox[{"Gv", "/", 
+                    RowBox[{"pv", "^", "kv"}]}]}]}], "}"}], "/.", "sol"}]}], 
+                    "]"}], ",", "sol"}], "]"}], ",", "\[IndentingNewLine]", 
+                 RowBox[{"ToString", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Union", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"kv", "\[Equal]", "1"}], ",", 
+                    "\"\<Abelian (1)\>\""}], "]"}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"kv", "\[Equal]", "2"}], ",", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", "\"\<Abelian (2)\>\"", "}"}], "]"}]}], "]"}],
+                     ",", "\[IndentingNewLine]", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Length", "[", "sol", "]"}], "\[Equal]", "1"}], 
+                    ",", "\"\<Normal\>\""}], "]"}]}], "}"}], "]"}], "/.", 
+                    RowBox[{"Null", "\[RuleDelayed]", 
+                    RowBox[{"Sequence", "[", "]"}]}]}], ",", 
+                   "TraditionalForm"}], "]"}]}], "\[IndentingNewLine]", 
+                "}"}]}], "\[IndentingNewLine]", "]"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"pk", ",", 
+           RowBox[{"FactorInteger", "[", "Gv", "]"}]}], "}"}]}], "]"}]}], 
+      "]"}], 
+     RowBox[{"(*", "]", "*)"}], "//", "TableForm"}], "//", 
+    "TraditionalForm"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"Gv", ",", "2020", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Abs", "[", "G", "]"}], "\[Equal]", "\"\<\>\""}], "//", 
+       "TraditionalForm"}]}], "}"}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Top"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Column", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Row", "[", 
+      RowBox[{"{", "\"\<Note:\>\"", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Row", "[", 
+      RowBox[{
+      "{", "\"\< Abelian (1) is Abelian due to prime-order groups being \
+cyclic;\>\"", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Row", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\< Abelian (2) is Abelian due to groups of order \>\"", ",", 
+        RowBox[{"p", "^", "2"}], ",", "\"\< being Abelian\>\""}], "}"}], 
+      "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], "//", 
+  "TraditionalForm"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AutoCollapse", "[", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8170554199922934`*^9, 3.817055419999201*^9}, {
+  3.817058146042638*^9, 3.8170582447211456`*^9}, {3.8170582888123326`*^9, 
+  3.8170582968173313`*^9}, {3.817059857649925*^9, 3.817059860658247*^9}, {
+  3.817059995197712*^9, 3.817060008815459*^9}, {3.8170602790294266`*^9, 
+  3.817060442343453*^9}, {3.8170606852625017`*^9, 3.817060727710923*^9}, {
+  3.8170657645102015`*^9, 3.8170662019027843`*^9}, {3.8170662366060514`*^9, 
+  3.8170663470862145`*^9}, {3.817066424580511*^9, 3.817066428551467*^9}, {
+  3.8170664589806433`*^9, 3.8170665012256837`*^9}, {3.8170665354305763`*^9, 
+  3.8170666782309666`*^9}, {3.8170667103378644`*^9, 3.8170669335163507`*^9}, {
+  3.817067304458848*^9, 3.817067313549138*^9}, {3.8170673717526674`*^9, 
+  3.8170673750318146`*^9}, {3.8170674588316016`*^9, 3.8170675690258136`*^9}, {
+  3.817067633471896*^9, 3.8170677056191716`*^9}},
+ CellLabel->
+  "In[128]:=",ExpressionUUID->"0e01a0e6-024d-4416-a083-e177dabcdadc"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`Gv$$ = 2020, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Gv$$], 2020, 
+       TraditionalForm[Abs[$CellContext`G] == ""]}}}, Typeset`size$$ = {
+    742., {70.80000000000001, 76.80000000000001}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`Gv$$ = 2020}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> TraditionalForm[
+        TableForm[
+         Join[{{
+            Row[{$CellContext`p, "-Sylow subgroup order"}], 
+            
+            Row[{"Possible #'s ", $CellContext`n, " of ", $CellContext`p, 
+              "-Sylow subgroups"}], "Known Properties"}}, 
+          Table[
+           
+           With[{$CellContext`pv$ = 
+             Part[$CellContext`pk, 1], $CellContext`kv$ = 
+             Part[$CellContext`pk, 2]}, 
+            
+            Join[{$CellContext`p^$CellContext`k -> 
+              If[$CellContext`kv$ == 1, $CellContext`pv$, 
+                Defer[$CellContext`pv$^$CellContext`kv$]]}, 
+             With[{$CellContext`sol$ = Solve[
+                 Reduce[
+                  And[
+                  Mod[$CellContext`nv, $CellContext`pv$] == 
+                   1, $CellContext`nv $CellContext`v == \
+$CellContext`Gv$$/$CellContext`pv$^$CellContext`kv$, $CellContext`nv >= 
+                   0, $CellContext`v >= 0], {$CellContext`nv, $CellContext`v},
+                   Integers], {$CellContext`nv, $CellContext`v}]}, {
+               Map[
+                Function[$CellContext`sol$, 
+                 
+                 ReplaceAll[{$CellContext`n -> $CellContext`nv, "", "", 
+                   "", $CellContext`n == CenterDot[
+                    Floor[$CellContext`nv/$CellContext`pv$], $CellContext`p] + 
+                    1, CenterDot[$CellContext`n, $CellContext`nv] == Row[{
+                    Abs[$CellContext`G], "/", 
+                    Defer[$CellContext`p^$CellContext`k]}] == 
+                   Row[{$CellContext`Gv$$, 
+                    "/", $CellContext`pv$^$CellContext`kv$}] == \
+$CellContext`Gv$$/$CellContext`pv$^$CellContext`kv$}, $CellContext`sol$]], \
+$CellContext`sol$], 
+               ToString[
+                ReplaceAll[
+                 Union[{
+                   If[$CellContext`kv$ == 1, "Abelian (1)"], 
+                   If[$CellContext`kv$ == 2, 
+                    Row[{"Abelian (2)"}]], 
+                   If[Length[$CellContext`sol$] == 1, "Normal"]}], Null :> 
+                 Sequence[]], TraditionalForm]}]]], {$CellContext`pk, 
+            FactorInteger[$CellContext`Gv$$]}]]]], 
+      "Specifications" :> {{{$CellContext`Gv$$, 2020, 
+          TraditionalForm[Abs[$CellContext`G] == ""]}}}, 
+      "Options" :> {ControlPlacement -> Top}, "DefaultOptions" :> {}],
+     ImageSizeCache->{789., {111., 117.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.8170676920304475`*^9, 3.817067705948318*^9}, 
+   3.8170677704340243`*^9},
+ CellLabel->
+  "Out[129]=",ExpressionUUID->"835c5db6-d9fd-4e1d-b56d-1c01de1bdc46"],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[GridBox[{
+     {
+      TemplateBox[{"\"Note:\""},
+       "RowDefault"]},
+     {
+      TemplateBox[{
+       "\" Abelian (1) is Abelian due to prime-order groups being cyclic;\""},
+       "RowDefault"]},
+     {
+      TemplateBox[{"\" Abelian (2) is Abelian due to groups of order \"", 
+        SuperscriptBox["p", "2"], "\" being Abelian\""},
+       "RowDefault"]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.8170676920304475`*^9, 3.817067705948318*^9}, 
+   3.8170677714098887`*^9},
+ CellLabel->
+  "Out[130]//TraditionalForm=",ExpressionUUID->"a6b10bb4-9185-4cbe-a371-\
+a1c519045495"]
+}, {2, 3}]]
+},
+WindowSize->{960, 478},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"dfbbebce-b11d-482b-9927-0adfcaa18c47"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 8654, 202, 437, "Input",ExpressionUUID->"0e01a0e6-024d-4416-a083-e177dabcdadc"],
+Cell[9237, 226, 3902, 81, 247, "Output",ExpressionUUID->"835c5db6-d9fd-4e1d-b56d-1c01de1bdc46"],
+Cell[13142, 309, 799, 23, 79, "Output",ExpressionUUID->"a6b10bb4-9185-4cbe-a371-a1c519045495"]
+}, {2, 3}]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
